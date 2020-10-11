@@ -20,11 +20,14 @@ prog: formula epsilon EOF;
     always: G interval;
     until: U interval;
     interval:LB intvalue COMMA intvalue RB;
-    intvalue: PRealnumber|Letter;
+    intvalue
+        : NUMBER
+        |Letter
+        ;
 
     predicates
             :
-            Signal relop Realnumber;
+            Signal relop realnum;
     relop
        : GT
        | LT
@@ -34,9 +37,9 @@ prog: formula epsilon EOF;
 
     epsilon
             :
-            LINEJUMP
-            | LINEJUMP NAME equal Realnumber epsilon;
+            NAME equal realnum epsilon;
     equal: Equal;
+    realnum: NUMBER|NUMBER;
 
 /**Tokens**/
 //operators
@@ -54,20 +57,35 @@ Equal: '=' ;
 
 SpaceOrTab: [ \t\n]+ -> skip;
 Comment: '--' ~[\r\n]* ->skip;
-
 Letter : [a-zA-Z];
-LP:'(';
-RP:')';
+LPAREN
+   : '('
+   ;
+
+
+RPAREN
+   : ')'
+   ;
+
 LB:'[';
 RB:']';
-COMMA:',';
-LINEJUMP: [\n]+;
+COMMA
+   : ','
+   ;
 
-PRealnumber:('0' | [1-9][0-9]*)|([0-9]*'.'?[1-9][0-9]*);
-NRealnumber:('-'?[1-9][0-9]*)|('-'?[1-9][0-9]*'.'?[1-9][0-9]*);
-Realnumber: NRealnumber|PRealnumber;
-NAME: Letter (Letter|[0-9]*|'_')*;
-Signal: NAME'(t)';
+
+ NUMBER
+   : ('0' .. '9') + ('.' ('0' .. '9') +)?
+   ;
+ NNUMBER
+   : '-'('0' .. '9') + ('.' ('0' .. '9') +)?
+   ;
+NAME
+    : Letter (Letter|('0' .. '9')+|'_')*
+    ;
+Signal
+    : NAME'(t)'
+    ;
 
 
 
