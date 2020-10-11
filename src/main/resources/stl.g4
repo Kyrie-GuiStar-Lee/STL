@@ -3,17 +3,25 @@ grammar stl;
  package cn.ecnu.tool.antlr;
 }
 //开始的变量
-prog: expr+ EOF
-    ;
+prog: formula epsilon EOF;
 
-    expr: F expr
-        | G expr
+    formula
+        : formulaName equal expr;
+    formulaName: NAME;
+    expr: eventually expr
+        | always expr
         | expr AND expr
         | expr OR expr
         | expr IMPLY expr
-        | expr U expr
+        | expr until expr
         | predicates
         ;
+    eventually: F interval;
+    always: G interval;
+    until: U interval;
+    interval:LB intvalue COMMA intvalue RB;
+    intvalue: PRealnumber|Letter;
+
     predicates
             :
             Signal relop Realnumber;
@@ -24,31 +32,47 @@ prog: expr+ EOF
        | LE
        ;
 
-/**Tokens**/
+    epsilon
+            :
+            LINEJUMP
+            | LINEJUMP NAME equal Realnumber epsilon;
+    equal: Equal;
 
-Letter : [a-zA-Z];
-Number :'0' | '-'?[1-9][0-9]*;
-Realnumber:Number|Number*'.'?[1-9][0-9]*;
-RealnumberP:[1-9][0-9]*|[1-9][0-9]*'.'?[1-9][0-9]*;
-FormulaName:Letter(Letter|Number|'_'|SpaceOrTab)*;
-SignalName: Letter(Letter|Number|'_');
-Interval: '{'RealnumberP','RealnumberP'}';
-Signal: SignalName'(t)';
-EPSILON: (SpaceOrTab)*'='(SpaceOrTab)* Realnumber (SpaceOrTab)* ;
-SpaceOrTab: [ \t\n]+ -> skip;
-Comment: '--' ~[\r\n]* ->skip;
+/**Tokens**/
 //operators
 AND: 'AND';
 OR: 'OR';
 IMPLY:'-->';
-F: 'F_'Interval;
-G:'G_'Interval;
-U:'U_'Interval;
-
+F:'F_';
+G:'G_';
+U:'U_';
 LT: '<';
 GT: '>';
 LE: '<=';
 GE: '>=';
+Equal: '=' ;
+
+SpaceOrTab: [ \t\n]+ -> skip;
+Comment: '--' ~[\r\n]* ->skip;
+
+Letter : [a-zA-Z];
+LP:'(';
+RP:')';
+LB:'[';
+RB:']';
+COMMA:',';
+LINEJUMP: [\n]+;
+
+PRealnumber:('0' | [1-9][0-9]*)|([0-9]*'.'?[1-9][0-9]*);
+NRealnumber:('-'?[1-9][0-9]*)|('-'?[1-9][0-9]*'.'?[1-9][0-9]*);
+Realnumber: NRealnumber|PRealnumber;
+NAME: Letter (Letter|[0-9]*|'_')*;
+Signal: NAME'(t)';
+
+
+
+
+
 
 
 
