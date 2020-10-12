@@ -10,10 +10,11 @@ prog: formula epsilon EOF;
     formulaName: NAME;
     expr: eventually expr
         | always expr
-        | expr AND expr
+        | expr AND  expr
         | expr OR expr
-        | expr IMPLY expr
-        | expr until expr
+        | expr IMPLY  expr
+        | expr  until  expr
+        | LPAREN expr RPAREN
         | predicates
         ;
     eventually: F interval;
@@ -27,7 +28,7 @@ prog: formula epsilon EOF;
 
     predicates
             :
-            Signal relop realnum;
+             Signal relop realnum ;
     relop
        : GT
        | LT
@@ -37,9 +38,9 @@ prog: formula epsilon EOF;
 
     epsilon
             :
-            NAME equal realnum epsilon;
+            Signal equal realnum epsilon;
     equal: Equal;
-    realnum: NUMBER|NUMBER;
+    realnum: NUMBER|NNUMBER;
 
 /**Tokens**/
 //operators
@@ -58,6 +59,7 @@ Equal: '=' ;
 SpaceOrTab: [ \t\n]+ -> skip;
 Comment: '--' ~[\r\n]* ->skip;
 Letter : [a-zA-Z];
+LINEJUMP:'\n';
 LPAREN
    : '('
    ;
