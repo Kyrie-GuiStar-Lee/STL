@@ -87,7 +87,7 @@ NAME
 Signal
     : NAME'(t)'
     ;
-SignalPert: Signal'_per';
+SignalPert: Signal'_pert';
 
 
 
