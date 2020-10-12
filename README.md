@@ -12,7 +12,7 @@ Signalname(t) > < >= <= 实数，t是时间变量
 
 eg: formula werr
 werr = G_[a,b] ((s(t)>1 OR F_[0.2,3] r(t)<=-0.2))
-s(t)_per = 0.9
-r(t)_per = 2
+s(t)_pert = 0.9
+r(t)_pert = 2
 
 the parse tree is like
