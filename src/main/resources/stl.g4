@@ -3,10 +3,10 @@ grammar stl;
  package cn.ecnu.tool.antlr;
 }
 //开始的变量
-prog: formula epsilon EOF;
+prog: formula perturbation_list;
 
     formula
-        : formulaName equal expr;
+        : formulaName Equal expr;
     formulaName: NAME;
     expr: eventually expr
         | always expr
@@ -23,7 +23,7 @@ prog: formula epsilon EOF;
     interval:LB intvalue COMMA intvalue RB;
     intvalue
         : NUMBER
-        |Letter
+        | Letter
         ;
 
     predicates
@@ -36,10 +36,10 @@ prog: formula epsilon EOF;
        | LE
        ;
 
-    epsilon
-            :
-            Signal equal realnum epsilon;
-    equal: Equal;
+    perturbation_list :
+    	    SignalPert Equal realnum perturbation_list | EOF;
+
+    //equal: Equal;
     realnum: NUMBER|NNUMBER;
 
 /**Tokens**/
@@ -59,7 +59,6 @@ Equal: '=' ;
 SpaceOrTab: [ \t\n]+ -> skip;
 Comment: '--' ~[\r\n]* ->skip;
 Letter : [a-zA-Z];
-LINEJUMP:'\n';
 LPAREN
    : '('
    ;
@@ -88,6 +87,7 @@ NAME
 Signal
     : NAME'(t)'
     ;
+SignalPert: Signal'_per';
 
 
 
