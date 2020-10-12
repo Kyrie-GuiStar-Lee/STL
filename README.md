@@ -9,3 +9,10 @@ Signalname(t)_pert=实数    -------信号的扰动
 
 STL公式：AND OR IMPLY FGU_[a,b] a,b是正实数
 Signalname(t) > < >= <= 实数，t是时间变量
+
+eg: formula werr
+werr = G_[a,b] ((s(t)>1 OR F_[0.2,3] r(t)<=-0.2))
+s(t)_per = 0.9
+r(t)_per = 2
+
+the parse tree is like
