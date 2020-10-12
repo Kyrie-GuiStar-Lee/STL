@@ -16,3 +16,4 @@ s(t)_pert = 0.9
 r(t)_pert = 2
 
 the parse tree is like
+![parse tree](https://github.com/Kyrie-GuiStar-Lee/STL/img/tree.jpg)
