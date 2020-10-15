@@ -3,7 +3,7 @@ grammar stl;
  package cn.ecnu.tool.antlr;
 }
 //开始的变量
-prog: formula perturbation_list;
+prog: formula perturbation_list+ EOF;
 
     formula
         : formulaName Equal expr;
@@ -37,7 +37,7 @@ prog: formula perturbation_list;
        ;
 
     perturbation_list :
-    	    SignalPert Equal realnum perturbation_list | EOF;
+    	    SignalPert Equal realnum;
 
     //equal: Equal;
     realnum: NUMBER|NNUMBER;
@@ -62,7 +62,7 @@ Letter : [a-zA-Z];
 LPAREN
    : '('
    ;
-
+LINEJUMP: '\n';
 
 RPAREN
    : ')'
