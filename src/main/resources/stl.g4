@@ -6,8 +6,7 @@ grammar stl;
 prog: formula perturbation_list+ EOF;
 
     formula
-        : formulaName Equal expr;
-    formulaName: NAME;
+        : NAME Equal expr;
     expr: eventually expr
         | always expr
         | expr AND  expr
