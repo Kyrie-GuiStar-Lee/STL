@@ -1,6 +1,6 @@
 package elements.element;
 
-public class Perturbation extends Program {
+public class Perturbation {
     public String sigName;
-    public Double num;//可以是整数也可以是小数
+    public RealNum num;//可以是整数也可以是小数
 }
