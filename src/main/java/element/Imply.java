@@ -1,5 +1,5 @@
 package element;
 
-public class Imply extends FormulawithPert{
+public class Imply implements Expression{
 
 }

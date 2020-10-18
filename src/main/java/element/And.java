@@ -1,5 +1,5 @@
 package element;
 
-public class And extends FormulawithPert{
+public class And implements Expression {
 
 }

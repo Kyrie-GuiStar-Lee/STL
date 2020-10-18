@@ -1,4 +1,4 @@
 package element;
 
-public class Global extends FormulawithPert{
+public class Global implements Expression {
 }

@@ -1,43 +1,25 @@
 grammar STL;
 
 //开始的变量
-prog: formula perturbation_list+ EOF;
+prog: form perturbation* EOF # Program_ ;
 
-    formula
-        : NAME Equal expr;
-    expr: eventually expr
-        | always expr
-        | expr AND  expr
-        | expr OR expr
-        | expr IMPLY  expr
-        | expr  until  expr
-        | LPAREN expr RPAREN
-        | predicates
-        ;
-    eventually: F interval;
-    always: G interval;
-    until: U interval;
-    interval:LB intvalue COMMA intvalue RB;
-    intvalue
-        : NUMBER
-        | Letter
-        ;
+    form
+        : NAME '=' expr # Formula_ ;
+    expr: (eventually|always) expr # EventualAlways_
+        | expr (AND|OR|IMPLY|until)  expr # AndOrImplyUntil_
+        | LPAREN expr RPAREN # Parens_
+        | Signal relop realnum # Predicates_;
 
-    predicates
-            :
-             Signal relop realnum ;
-    relop
-       : GT
-       | LT
-       | GE
-       | LE
-       ;
+    eventually: F interval # Eventually_;
+    always: G interval # Always_;
+    until: U interval # Until_;
+    interval:LB intvalue COMMA intvalue RB # Interval_;
+    intvalue: NUMBER|Letter # IntValue_;
+    relop: GT| LT| GE| LE ;
 
-    perturbation_list :
-    	    SignalPert Equal realnum;
+    perturbation : SignalPert '=' realnum # Perturbation_;
 
-    //equal: Equal;
-    realnum: NUMBER|NNUMBER;
+    realnum: NUMBER|NNUMBER ;
 
 /**Tokens**/
 //operators
@@ -51,7 +33,6 @@ LT: '<';
 GT: '>';
 LE: '<=';
 GE: '>=';
-Equal: '=' ;
 
 SpaceOrTab: [ \t\n]+ -> skip;
 Comment: '--' ~[\r\n]* ->skip;

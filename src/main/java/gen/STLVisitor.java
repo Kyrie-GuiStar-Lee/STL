@@ -93,12 +93,12 @@ public interface STLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRelop(STLParser.RelopContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code PerturbationList_}
-	 * labeled alternative in {@link STLParser#perturbation_list}.
+	 * Visit a parse tree produced by the {@code Perturbation_}
+	 * labeled alternative in {@link STLParser#perturbation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPerturbationList_(STLParser.PerturbationList_Context ctx);
+	T visitPerturbation_(STLParser.Perturbation_Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link STLParser#realnum}.
 	 * @param ctx the parse tree

@@ -1,4 +1,4 @@
 package element;
 
-public class Or extends FormulawithPert{
+public class Or implements Expression {
 }

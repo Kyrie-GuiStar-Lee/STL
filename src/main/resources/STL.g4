@@ -1,7 +1,7 @@
 grammar STL;
 
 //开始的变量
-prog: form perturbation_list+ EOF # Program_ ;
+prog: form perturbation* EOF # Program_ ;
 
     form
         : NAME '=' expr # Formula_ ;
@@ -14,10 +14,10 @@ prog: form perturbation_list+ EOF # Program_ ;
     always: G interval # Always_;
     until: U interval # Until_;
     interval:LB intvalue COMMA intvalue RB # Interval_;
-    intvalue: NUMBER|Letter;
+    intvalue: NUMBER|Letter # IntValue_;
     relop: GT| LT| GE| LE ;
 
-    perturbation_list : SignalPert '=' realnum # PerturbationList_;
+    perturbation : SignalPert '=' realnum # Perturbation_;
 
     realnum: NUMBER|NNUMBER ;
 
