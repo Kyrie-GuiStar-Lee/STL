@@ -1,7 +1,5 @@
-grammar stl;
-@header {
- package cn.ecnu.tool.antlr;
-}
+grammar STL;
+
 //开始的变量
 prog: formula perturbation_list+ EOF;
 

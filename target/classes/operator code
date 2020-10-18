@@ -1,0 +1,50 @@
+model=new_system; // 用于新建模型，并将所建立模型句柄赋值给 model
+open_system(model)；//打开新建模型
+
+add_block('built-in/SubSystem', 'untitled/SubSystem', 'Position',[0 100 100 300])
+
+
+
+%%--原子谓词--%%%
+%%--s>c type1%%%
+add_block('simulink/Math Operations/Add','targetname')
+set_param('targetname', 'Inputs', '+--')
+%add_line('Test/Test_Exists', '-1854867804/1', '-410210744mu/1')
+
+%%--s<c type1%%%
+add_block('simulink/Math Operations/Add','targetname')
+set_param('targetname', 'Inputs', '-+-')
+
+%%--s>c type2%%%
+add_block('simulink/Math Operations/Add','targetname')
+set_param('targetname', 'Inputs', '+-+')
+
+%%--s>c type2%%%
+add_block('simulink/Math Operations/Add','targetname')
+set_param('targetname', 'Inputs', '-++')
+
+%%%%%%---析取 or----%%%%%%%%%%%
+add_block('simulink/Math Operations/MinMax', 'Test/Test_Exists/-1208916169')
+set_param('Test/Test_Exists/-1208916169', 'Function', 'max')
+
+%%%%%%---合取 and----%%%%%%%%%%%
+add_block('simulink/Math Operations/MinMax', 'Test/Test_Exists/-1208916169')
+set_param('Test/Test_Exists/-1208916169', 'Function', 'min')
+
+%%%%%%---否定 not ----%%%%%%%%%%%
+add_block('simulink/Math Operations/Gain', 'Test/Test_Exists/-1854867804')
+set_param('Test/Test_Exists/-1854867804', 'Gain', '-1')
+
+%%%%%%--- F_a,b phi ----%%%%%%%%%%%
+add_block('DSP System Toolbox/Statistics/Moving Maximum', 'targetname')
+set_param('Test/Test_Exists/-1854867804', 'Window length', 'b-a')
+add_block('simulink/Discrete/Unit Delay', 'Test/Test_Exists/-1208916169Delay')
+set_param('Test/Test_Exists/-1208916169Delay', 'X0', 'a')
+addline....moving maximum to delay
+
+%%%%%%--- G_a,b phi ----%%%%%%%%%%%
+add_block('DSP System Toolbox/Statistics/Moving Minimum', 'targetname')
+set_param('Test/Test_Exists/-1854867804', 'Window length', 'b-a')
+add_block('simulink/Discrete/Unit Delay', 'Test/Test_Exists/-1208916169Delay')
+set_param('Test/Test_Exists/-1208916169Delay', 'X0', 'a')
+addline....moving maximum to delay
