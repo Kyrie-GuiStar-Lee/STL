@@ -8,75 +8,125 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface STLListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link STLParser#prog}.
+	 * Enter a parse tree produced by the {@code Program_}
+	 * labeled alternative in {@link STLParser#prog}.
 	 * @param ctx the parse tree
 	 */
-	void enterProg(STLParser.ProgContext ctx);
+	void enterProgram_(STLParser.Program_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link STLParser#prog}.
+	 * Exit a parse tree produced by the {@code Program_}
+	 * labeled alternative in {@link STLParser#prog}.
 	 * @param ctx the parse tree
 	 */
-	void exitProg(STLParser.ProgContext ctx);
+	void exitProgram_(STLParser.Program_Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link STLParser#formula}.
+	 * Enter a parse tree produced by the {@code Formula_}
+	 * labeled alternative in {@link STLParser#form}.
 	 * @param ctx the parse tree
 	 */
-	void enterFormula(STLParser.FormulaContext ctx);
+	void enterFormula_(STLParser.Formula_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link STLParser#formula}.
+	 * Exit a parse tree produced by the {@code Formula_}
+	 * labeled alternative in {@link STLParser#form}.
 	 * @param ctx the parse tree
 	 */
-	void exitFormula(STLParser.FormulaContext ctx);
+	void exitFormula_(STLParser.Formula_Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link STLParser#expr}.
+	 * Enter a parse tree produced by the {@code EventualAlways_}
+	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpr(STLParser.ExprContext ctx);
+	void enterEventualAlways_(STLParser.EventualAlways_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link STLParser#expr}.
+	 * Exit a parse tree produced by the {@code EventualAlways_}
+	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpr(STLParser.ExprContext ctx);
+	void exitEventualAlways_(STLParser.EventualAlways_Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link STLParser#eventually}.
+	 * Enter a parse tree produced by the {@code Parens_}
+	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterEventually(STLParser.EventuallyContext ctx);
+	void enterParens_(STLParser.Parens_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link STLParser#eventually}.
+	 * Exit a parse tree produced by the {@code Parens_}
+	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitEventually(STLParser.EventuallyContext ctx);
+	void exitParens_(STLParser.Parens_Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link STLParser#always}.
+	 * Enter a parse tree produced by the {@code AndOrImplyUntil_}
+	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterAlways(STLParser.AlwaysContext ctx);
+	void enterAndOrImplyUntil_(STLParser.AndOrImplyUntil_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link STLParser#always}.
+	 * Exit a parse tree produced by the {@code AndOrImplyUntil_}
+	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitAlways(STLParser.AlwaysContext ctx);
+	void exitAndOrImplyUntil_(STLParser.AndOrImplyUntil_Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link STLParser#until}.
+	 * Enter a parse tree produced by the {@code Predicates_}
+	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterUntil(STLParser.UntilContext ctx);
+	void enterPredicates_(STLParser.Predicates_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link STLParser#until}.
+	 * Exit a parse tree produced by the {@code Predicates_}
+	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitUntil(STLParser.UntilContext ctx);
+	void exitPredicates_(STLParser.Predicates_Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link STLParser#interval}.
+	 * Enter a parse tree produced by the {@code Eventually_}
+	 * labeled alternative in {@link STLParser#eventually}.
 	 * @param ctx the parse tree
 	 */
-	void enterInterval(STLParser.IntervalContext ctx);
+	void enterEventually_(STLParser.Eventually_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link STLParser#interval}.
+	 * Exit a parse tree produced by the {@code Eventually_}
+	 * labeled alternative in {@link STLParser#eventually}.
 	 * @param ctx the parse tree
 	 */
-	void exitInterval(STLParser.IntervalContext ctx);
+	void exitEventually_(STLParser.Eventually_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Always_}
+	 * labeled alternative in {@link STLParser#always}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlways_(STLParser.Always_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Always_}
+	 * labeled alternative in {@link STLParser#always}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlways_(STLParser.Always_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Until_}
+	 * labeled alternative in {@link STLParser#until}.
+	 * @param ctx the parse tree
+	 */
+	void enterUntil_(STLParser.Until_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Until_}
+	 * labeled alternative in {@link STLParser#until}.
+	 * @param ctx the parse tree
+	 */
+	void exitUntil_(STLParser.Until_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Interval_}
+	 * labeled alternative in {@link STLParser#interval}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterval_(STLParser.Interval_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Interval_}
+	 * labeled alternative in {@link STLParser#interval}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterval_(STLParser.Interval_Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link STLParser#intvalue}.
 	 * @param ctx the parse tree
@@ -88,16 +138,6 @@ public interface STLListener extends ParseTreeListener {
 	 */
 	void exitIntvalue(STLParser.IntvalueContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link STLParser#predicates}.
-	 * @param ctx the parse tree
-	 */
-	void enterPredicates(STLParser.PredicatesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link STLParser#predicates}.
-	 * @param ctx the parse tree
-	 */
-	void exitPredicates(STLParser.PredicatesContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link STLParser#relop}.
 	 * @param ctx the parse tree
 	 */
@@ -108,15 +148,17 @@ public interface STLListener extends ParseTreeListener {
 	 */
 	void exitRelop(STLParser.RelopContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link STLParser#perturbation_list}.
+	 * Enter a parse tree produced by the {@code PerturbationList_}
+	 * labeled alternative in {@link STLParser#perturbation_list}.
 	 * @param ctx the parse tree
 	 */
-	void enterPerturbation_list(STLParser.Perturbation_listContext ctx);
+	void enterPerturbationList_(STLParser.PerturbationList_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link STLParser#perturbation_list}.
+	 * Exit a parse tree produced by the {@code PerturbationList_}
+	 * labeled alternative in {@link STLParser#perturbation_list}.
 	 * @param ctx the parse tree
 	 */
-	void exitPerturbation_list(STLParser.Perturbation_listContext ctx);
+	void exitPerturbationList_(STLParser.PerturbationList_Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link STLParser#realnum}.
 	 * @param ctx the parse tree

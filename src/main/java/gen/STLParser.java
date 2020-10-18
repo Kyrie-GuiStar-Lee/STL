@@ -17,32 +17,32 @@ public class STLParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		AND=1, OR=2, IMPLY=3, F=4, G=5, U=6, LT=7, GT=8, LE=9, GE=10, Equal=11, 
+		T__0=1, AND=2, OR=3, IMPLY=4, F=5, G=6, U=7, LT=8, GT=9, LE=10, GE=11, 
 		SpaceOrTab=12, Comment=13, Letter=14, LPAREN=15, LINEJUMP=16, RPAREN=17, 
 		LB=18, RB=19, COMMA=20, NUMBER=21, NNUMBER=22, NAME=23, Signal=24, SignalPert=25;
 	public static final int
-		RULE_prog = 0, RULE_formula = 1, RULE_expr = 2, RULE_eventually = 3, RULE_always = 4, 
-		RULE_until = 5, RULE_interval = 6, RULE_intvalue = 7, RULE_predicates = 8, 
-		RULE_relop = 9, RULE_perturbation_list = 10, RULE_realnum = 11;
+		RULE_prog = 0, RULE_form = 1, RULE_expr = 2, RULE_eventually = 3, RULE_always = 4, 
+		RULE_until = 5, RULE_interval = 6, RULE_intvalue = 7, RULE_relop = 8, 
+		RULE_perturbation_list = 9, RULE_realnum = 10;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"prog", "formula", "expr", "eventually", "always", "until", "interval", 
-			"intvalue", "predicates", "relop", "perturbation_list", "realnum"
+			"prog", "form", "expr", "eventually", "always", "until", "interval", 
+			"intvalue", "relop", "perturbation_list", "realnum"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'AND'", "'OR'", "'-->'", "'F_'", "'G_'", "'U_'", "'<'", "'>'", 
-			"'<='", "'>='", "'='", null, null, null, "'('", "'\n'", "')'", "'['", 
+			null, "'='", "'AND'", "'OR'", "'-->'", "'F_'", "'G_'", "'U_'", "'<'", 
+			"'>'", "'<='", "'>='", null, null, null, "'('", "'\n'", "')'", "'['", 
 			"']'", "','"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "AND", "OR", "IMPLY", "F", "G", "U", "LT", "GT", "LE", "GE", "Equal", 
+			null, null, "AND", "OR", "IMPLY", "F", "G", "U", "LT", "GT", "LE", "GE", 
 			"SpaceOrTab", "Comment", "Letter", "LPAREN", "LINEJUMP", "RPAREN", "LB", 
 			"RB", "COMMA", "NUMBER", "NNUMBER", "NAME", "Signal", "SignalPert"
 		};
@@ -99,8 +99,19 @@ public class STLParser extends Parser {
 	}
 
 	public static class ProgContext extends ParserRuleContext {
-		public FormulaContext formula() {
-			return getRuleContext(FormulaContext.class,0);
+		public ProgContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_prog; }
+	 
+		public ProgContext() { }
+		public void copyFrom(ProgContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class Program_Context extends ProgContext {
+		public FormContext form() {
+			return getRuleContext(FormContext.class,0);
 		}
 		public TerminalNode EOF() { return getToken(STLParser.EOF, 0); }
 		public List<Perturbation_listContext> perturbation_list() {
@@ -109,21 +120,18 @@ public class STLParser extends Parser {
 		public Perturbation_listContext perturbation_list(int i) {
 			return getRuleContext(Perturbation_listContext.class,i);
 		}
-		public ProgContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_prog; }
+		public Program_Context(ProgContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).enterProg(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterProgram_(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).exitProg(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitProgram_(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitProg(this);
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitProgram_(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -133,25 +141,26 @@ public class STLParser extends Parser {
 		enterRule(_localctx, 0, RULE_prog);
 		int _la;
 		try {
+			_localctx = new Program_Context(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(24);
-			formula();
-			setState(26); 
+			setState(22);
+			form();
+			setState(24); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(25);
+				setState(23);
 				perturbation_list();
 				}
 				}
-				setState(28); 
+				setState(26); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==SignalPert );
-			setState(30);
+			setState(28);
 			match(EOF);
 			}
 		}
@@ -166,42 +175,50 @@ public class STLParser extends Parser {
 		return _localctx;
 	}
 
-	public static class FormulaContext extends ParserRuleContext {
+	public static class FormContext extends ParserRuleContext {
+		public FormContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_form; }
+	 
+		public FormContext() { }
+		public void copyFrom(FormContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class Formula_Context extends FormContext {
 		public TerminalNode NAME() { return getToken(STLParser.NAME, 0); }
-		public TerminalNode Equal() { return getToken(STLParser.Equal, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
-		public FormulaContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_formula; }
+		public Formula_Context(FormContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).enterFormula(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterFormula_(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).exitFormula(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitFormula_(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitFormula(this);
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitFormula_(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final FormulaContext formula() throws RecognitionException {
-		FormulaContext _localctx = new FormulaContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_formula);
+	public final FormContext form() throws RecognitionException {
+		FormContext _localctx = new FormContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_form);
 		try {
+			_localctx = new Formula_Context(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(32);
+			setState(30);
 			match(NAME);
-			setState(33);
-			match(Equal);
-			setState(34);
+			setState(31);
+			match(T__0);
+			setState(32);
 			expr(0);
 			}
 		}
@@ -217,22 +234,68 @@ public class STLParser extends Parser {
 	}
 
 	public static class ExprContext extends ParserRuleContext {
+		public ExprContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_expr; }
+	 
+		public ExprContext() { }
+		public void copyFrom(ExprContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class EventualAlways_Context extends ExprContext {
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
 		public EventuallyContext eventually() {
 			return getRuleContext(EventuallyContext.class,0);
 		}
+		public AlwaysContext always() {
+			return getRuleContext(AlwaysContext.class,0);
+		}
+		public EventualAlways_Context(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterEventualAlways_(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitEventualAlways_(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitEventualAlways_(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class Parens_Context extends ExprContext {
+		public TerminalNode LPAREN() { return getToken(STLParser.LPAREN, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public TerminalNode RPAREN() { return getToken(STLParser.RPAREN, 0); }
+		public Parens_Context(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterParens_(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitParens_(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitParens_(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class AndOrImplyUntil_Context extends ExprContext {
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
-		}
-		public AlwaysContext always() {
-			return getRuleContext(AlwaysContext.class,0);
-		}
-		public TerminalNode LPAREN() { return getToken(STLParser.LPAREN, 0); }
-		public TerminalNode RPAREN() { return getToken(STLParser.RPAREN, 0); }
-		public PredicatesContext predicates() {
-			return getRuleContext(PredicatesContext.class,0);
 		}
 		public TerminalNode AND() { return getToken(STLParser.AND, 0); }
 		public TerminalNode OR() { return getToken(STLParser.OR, 0); }
@@ -240,21 +303,41 @@ public class STLParser extends Parser {
 		public UntilContext until() {
 			return getRuleContext(UntilContext.class,0);
 		}
-		public ExprContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_expr; }
+		public AndOrImplyUntil_Context(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).enterExpr(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterAndOrImplyUntil_(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).exitExpr(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitAndOrImplyUntil_(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitExpr(this);
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitAndOrImplyUntil_(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class Predicates_Context extends ExprContext {
+		public TerminalNode Signal() { return getToken(STLParser.Signal, 0); }
+		public RelopContext relop() {
+			return getRuleContext(RelopContext.class,0);
+		}
+		public RealnumContext realnum() {
+			return getRuleContext(RealnumContext.class,0);
+		}
+		public Predicates_Context(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterPredicates_(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitPredicates_(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitPredicates_(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -274,110 +357,119 @@ public class STLParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48);
+			setState(49);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case F:
-				{
-				setState(37);
-				eventually();
-				setState(38);
-				expr(8);
-				}
-				break;
 			case G:
 				{
-				setState(40);
-				always();
-				setState(41);
-				expr(7);
+				_localctx = new EventualAlways_Context(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+
+				setState(37);
+				_errHandler.sync(this);
+				switch (_input.LA(1)) {
+				case F:
+					{
+					setState(35);
+					eventually();
+					}
+					break;
+				case G:
+					{
+					setState(36);
+					always();
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				setState(39);
+				expr(4);
 				}
 				break;
 			case LPAREN:
 				{
-				setState(43);
+				_localctx = new Parens_Context(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(41);
 				match(LPAREN);
-				setState(44);
+				setState(42);
 				expr(0);
-				setState(45);
+				setState(43);
 				match(RPAREN);
 				}
 				break;
 			case Signal:
 				{
+				_localctx = new Predicates_Context(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(45);
+				match(Signal);
+				setState(46);
+				relop();
 				setState(47);
-				predicates();
+				realnum();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(65);
+			setState(61);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(63);
+					{
+					_localctx = new AndOrImplyUntil_Context(new ExprContext(_parentctx, _parentState));
+					pushNewRecursionContext(_localctx, _startState, RULE_expr);
+					setState(51);
+					if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+					setState(56);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
-					case 1:
+					switch (_input.LA(1)) {
+					case AND:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
-						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(50);
-						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(51);
-						match(AND);
 						setState(52);
-						expr(7);
+						match(AND);
 						}
 						break;
-					case 2:
+					case OR:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
-						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(53);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(54);
 						match(OR);
-						setState(55);
-						expr(6);
 						}
 						break;
-					case 3:
+					case IMPLY:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
-						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(56);
-						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(57);
+						setState(54);
 						match(IMPLY);
-						setState(58);
-						expr(5);
 						}
 						break;
-					case 4:
+					case U:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
-						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(59);
-						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(60);
+						setState(55);
 						until();
-						setState(61);
-						expr(4);
 						}
 						break;
+					default:
+						throw new NoViableAltException(this);
+					}
+					setState(58);
+					expr(4);
 					}
 					} 
 				}
-				setState(67);
+				setState(63);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			}
 			}
 		}
@@ -393,25 +485,33 @@ public class STLParser extends Parser {
 	}
 
 	public static class EventuallyContext extends ParserRuleContext {
-		public TerminalNode F() { return getToken(STLParser.F, 0); }
-		public IntervalContext interval() {
-			return getRuleContext(IntervalContext.class,0);
-		}
 		public EventuallyContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_eventually; }
+	 
+		public EventuallyContext() { }
+		public void copyFrom(EventuallyContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class Eventually_Context extends EventuallyContext {
+		public TerminalNode F() { return getToken(STLParser.F, 0); }
+		public IntervalContext interval() {
+			return getRuleContext(IntervalContext.class,0);
+		}
+		public Eventually_Context(EventuallyContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).enterEventually(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterEventually_(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).exitEventually(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitEventually_(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitEventually(this);
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitEventually_(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -420,11 +520,12 @@ public class STLParser extends Parser {
 		EventuallyContext _localctx = new EventuallyContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_eventually);
 		try {
+			_localctx = new Eventually_Context(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(68);
+			setState(64);
 			match(F);
-			setState(69);
+			setState(65);
 			interval();
 			}
 		}
@@ -440,25 +541,33 @@ public class STLParser extends Parser {
 	}
 
 	public static class AlwaysContext extends ParserRuleContext {
-		public TerminalNode G() { return getToken(STLParser.G, 0); }
-		public IntervalContext interval() {
-			return getRuleContext(IntervalContext.class,0);
-		}
 		public AlwaysContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_always; }
+	 
+		public AlwaysContext() { }
+		public void copyFrom(AlwaysContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class Always_Context extends AlwaysContext {
+		public TerminalNode G() { return getToken(STLParser.G, 0); }
+		public IntervalContext interval() {
+			return getRuleContext(IntervalContext.class,0);
+		}
+		public Always_Context(AlwaysContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).enterAlways(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterAlways_(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).exitAlways(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitAlways_(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitAlways(this);
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitAlways_(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -467,11 +576,12 @@ public class STLParser extends Parser {
 		AlwaysContext _localctx = new AlwaysContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_always);
 		try {
+			_localctx = new Always_Context(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(71);
+			setState(67);
 			match(G);
-			setState(72);
+			setState(68);
 			interval();
 			}
 		}
@@ -487,25 +597,33 @@ public class STLParser extends Parser {
 	}
 
 	public static class UntilContext extends ParserRuleContext {
-		public TerminalNode U() { return getToken(STLParser.U, 0); }
-		public IntervalContext interval() {
-			return getRuleContext(IntervalContext.class,0);
-		}
 		public UntilContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_until; }
+	 
+		public UntilContext() { }
+		public void copyFrom(UntilContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class Until_Context extends UntilContext {
+		public TerminalNode U() { return getToken(STLParser.U, 0); }
+		public IntervalContext interval() {
+			return getRuleContext(IntervalContext.class,0);
+		}
+		public Until_Context(UntilContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).enterUntil(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterUntil_(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).exitUntil(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitUntil_(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitUntil(this);
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitUntil_(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -514,11 +632,12 @@ public class STLParser extends Parser {
 		UntilContext _localctx = new UntilContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_until);
 		try {
+			_localctx = new Until_Context(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(74);
+			setState(70);
 			match(U);
-			setState(75);
+			setState(71);
 			interval();
 			}
 		}
@@ -534,6 +653,17 @@ public class STLParser extends Parser {
 	}
 
 	public static class IntervalContext extends ParserRuleContext {
+		public IntervalContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_interval; }
+	 
+		public IntervalContext() { }
+		public void copyFrom(IntervalContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class Interval_Context extends IntervalContext {
 		public TerminalNode LB() { return getToken(STLParser.LB, 0); }
 		public List<IntvalueContext> intvalue() {
 			return getRuleContexts(IntvalueContext.class);
@@ -543,21 +673,18 @@ public class STLParser extends Parser {
 		}
 		public TerminalNode COMMA() { return getToken(STLParser.COMMA, 0); }
 		public TerminalNode RB() { return getToken(STLParser.RB, 0); }
-		public IntervalContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_interval; }
+		public Interval_Context(IntervalContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).enterInterval(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterInterval_(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).exitInterval(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitInterval_(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitInterval(this);
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitInterval_(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -566,17 +693,18 @@ public class STLParser extends Parser {
 		IntervalContext _localctx = new IntervalContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_interval);
 		try {
+			_localctx = new Interval_Context(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(77);
+			setState(73);
 			match(LB);
-			setState(78);
+			setState(74);
 			intvalue();
-			setState(79);
+			setState(75);
 			match(COMMA);
-			setState(80);
+			setState(76);
 			intvalue();
-			setState(81);
+			setState(77);
 			match(RB);
 			}
 		}
@@ -620,7 +748,7 @@ public class STLParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(83);
+			setState(79);
 			_la = _input.LA(1);
 			if ( !(_la==Letter || _la==NUMBER) ) {
 			_errHandler.recoverInline(this);
@@ -630,58 +758,6 @@ public class STLParser extends Parser {
 				_errHandler.reportMatch(this);
 				consume();
 			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class PredicatesContext extends ParserRuleContext {
-		public TerminalNode Signal() { return getToken(STLParser.Signal, 0); }
-		public RelopContext relop() {
-			return getRuleContext(RelopContext.class,0);
-		}
-		public RealnumContext realnum() {
-			return getRuleContext(RealnumContext.class,0);
-		}
-		public PredicatesContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_predicates; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).enterPredicates(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).exitPredicates(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitPredicates(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final PredicatesContext predicates() throws RecognitionException {
-		PredicatesContext _localctx = new PredicatesContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_predicates);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(85);
-			match(Signal);
-			setState(86);
-			relop();
-			setState(87);
-			realnum();
 			}
 		}
 		catch (RecognitionException re) {
@@ -721,12 +797,12 @@ public class STLParser extends Parser {
 
 	public final RelopContext relop() throws RecognitionException {
 		RelopContext _localctx = new RelopContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_relop);
+		enterRule(_localctx, 16, RULE_relop);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(89);
+			setState(81);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LT) | (1L << GT) | (1L << LE) | (1L << GE))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -750,41 +826,49 @@ public class STLParser extends Parser {
 	}
 
 	public static class Perturbation_listContext extends ParserRuleContext {
-		public TerminalNode SignalPert() { return getToken(STLParser.SignalPert, 0); }
-		public TerminalNode Equal() { return getToken(STLParser.Equal, 0); }
-		public RealnumContext realnum() {
-			return getRuleContext(RealnumContext.class,0);
-		}
 		public Perturbation_listContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_perturbation_list; }
+	 
+		public Perturbation_listContext() { }
+		public void copyFrom(Perturbation_listContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class PerturbationList_Context extends Perturbation_listContext {
+		public TerminalNode SignalPert() { return getToken(STLParser.SignalPert, 0); }
+		public RealnumContext realnum() {
+			return getRuleContext(RealnumContext.class,0);
+		}
+		public PerturbationList_Context(Perturbation_listContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).enterPerturbation_list(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterPerturbationList_(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).exitPerturbation_list(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitPerturbationList_(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitPerturbation_list(this);
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitPerturbationList_(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final Perturbation_listContext perturbation_list() throws RecognitionException {
 		Perturbation_listContext _localctx = new Perturbation_listContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_perturbation_list);
+		enterRule(_localctx, 18, RULE_perturbation_list);
 		try {
+			_localctx = new PerturbationList_Context(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(91);
+			setState(83);
 			match(SignalPert);
-			setState(92);
-			match(Equal);
-			setState(93);
+			setState(84);
+			match(T__0);
+			setState(85);
 			realnum();
 			}
 		}
@@ -823,12 +907,12 @@ public class STLParser extends Parser {
 
 	public final RealnumContext realnum() throws RecognitionException {
 		RealnumContext _localctx = new RealnumContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_realnum);
+		enterRule(_localctx, 20, RULE_realnum);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(95);
+			setState(87);
 			_la = _input.LA(1);
 			if ( !(_la==NUMBER || _la==NNUMBER) ) {
 			_errHandler.recoverInline(this);
@@ -861,42 +945,34 @@ public class STLParser extends Parser {
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 6);
-		case 1:
-			return precpred(_ctx, 5);
-		case 2:
-			return precpred(_ctx, 4);
-		case 3:
 			return precpred(_ctx, 3);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33d\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
-		"\f\t\f\4\r\t\r\3\2\3\2\6\2\35\n\2\r\2\16\2\36\3\2\3\2\3\3\3\3\3\3\3\3"+
-		"\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\63\n\4\3\4\3\4\3"+
-		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4B\n\4\f\4\16\4E\13\4\3\5"+
-		"\3\5\3\5\3\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\n\3"+
-		"\n\3\n\3\n\3\13\3\13\3\f\3\f\3\f\3\f\3\r\3\r\3\r\2\3\6\16\2\4\6\b\n\f"+
-		"\16\20\22\24\26\30\2\5\4\2\20\20\27\27\3\2\t\f\3\2\27\30\2_\2\32\3\2\2"+
-		"\2\4\"\3\2\2\2\6\62\3\2\2\2\bF\3\2\2\2\nI\3\2\2\2\fL\3\2\2\2\16O\3\2\2"+
-		"\2\20U\3\2\2\2\22W\3\2\2\2\24[\3\2\2\2\26]\3\2\2\2\30a\3\2\2\2\32\34\5"+
-		"\4\3\2\33\35\5\26\f\2\34\33\3\2\2\2\35\36\3\2\2\2\36\34\3\2\2\2\36\37"+
-		"\3\2\2\2\37 \3\2\2\2 !\7\2\2\3!\3\3\2\2\2\"#\7\31\2\2#$\7\r\2\2$%\5\6"+
-		"\4\2%\5\3\2\2\2&\'\b\4\1\2\'(\5\b\5\2()\5\6\4\n)\63\3\2\2\2*+\5\n\6\2"+
-		"+,\5\6\4\t,\63\3\2\2\2-.\7\21\2\2./\5\6\4\2/\60\7\23\2\2\60\63\3\2\2\2"+
-		"\61\63\5\22\n\2\62&\3\2\2\2\62*\3\2\2\2\62-\3\2\2\2\62\61\3\2\2\2\63C"+
-		"\3\2\2\2\64\65\f\b\2\2\65\66\7\3\2\2\66B\5\6\4\t\678\f\7\2\289\7\4\2\2"+
-		"9B\5\6\4\b:;\f\6\2\2;<\7\5\2\2<B\5\6\4\7=>\f\5\2\2>?\5\f\7\2?@\5\6\4\6"+
-		"@B\3\2\2\2A\64\3\2\2\2A\67\3\2\2\2A:\3\2\2\2A=\3\2\2\2BE\3\2\2\2CA\3\2"+
-		"\2\2CD\3\2\2\2D\7\3\2\2\2EC\3\2\2\2FG\7\6\2\2GH\5\16\b\2H\t\3\2\2\2IJ"+
-		"\7\7\2\2JK\5\16\b\2K\13\3\2\2\2LM\7\b\2\2MN\5\16\b\2N\r\3\2\2\2OP\7\24"+
-		"\2\2PQ\5\20\t\2QR\7\26\2\2RS\5\20\t\2ST\7\25\2\2T\17\3\2\2\2UV\t\2\2\2"+
-		"V\21\3\2\2\2WX\7\32\2\2XY\5\24\13\2YZ\5\30\r\2Z\23\3\2\2\2[\\\t\3\2\2"+
-		"\\\25\3\2\2\2]^\7\33\2\2^_\7\r\2\2_`\5\30\r\2`\27\3\2\2\2ab\t\4\2\2b\31"+
-		"\3\2\2\2\6\36\62AC";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33\\\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13"+
+		"\4\f\t\f\3\2\3\2\6\2\33\n\2\r\2\16\2\34\3\2\3\2\3\3\3\3\3\3\3\3\3\4\3"+
+		"\4\3\4\5\4(\n\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\64\n\4\3\4"+
+		"\3\4\3\4\3\4\3\4\5\4;\n\4\3\4\7\4>\n\4\f\4\16\4A\13\4\3\5\3\5\3\5\3\6"+
+		"\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13"+
+		"\3\13\3\13\3\f\3\f\3\f\2\3\6\r\2\4\6\b\n\f\16\20\22\24\26\2\5\4\2\20\20"+
+		"\27\27\3\2\n\r\3\2\27\30\2X\2\30\3\2\2\2\4 \3\2\2\2\6\63\3\2\2\2\bB\3"+
+		"\2\2\2\nE\3\2\2\2\fH\3\2\2\2\16K\3\2\2\2\20Q\3\2\2\2\22S\3\2\2\2\24U\3"+
+		"\2\2\2\26Y\3\2\2\2\30\32\5\4\3\2\31\33\5\24\13\2\32\31\3\2\2\2\33\34\3"+
+		"\2\2\2\34\32\3\2\2\2\34\35\3\2\2\2\35\36\3\2\2\2\36\37\7\2\2\3\37\3\3"+
+		"\2\2\2 !\7\31\2\2!\"\7\3\2\2\"#\5\6\4\2#\5\3\2\2\2$\'\b\4\1\2%(\5\b\5"+
+		"\2&(\5\n\6\2\'%\3\2\2\2\'&\3\2\2\2()\3\2\2\2)*\5\6\4\6*\64\3\2\2\2+,\7"+
+		"\21\2\2,-\5\6\4\2-.\7\23\2\2.\64\3\2\2\2/\60\7\32\2\2\60\61\5\22\n\2\61"+
+		"\62\5\26\f\2\62\64\3\2\2\2\63$\3\2\2\2\63+\3\2\2\2\63/\3\2\2\2\64?\3\2"+
+		"\2\2\65:\f\5\2\2\66;\7\4\2\2\67;\7\5\2\28;\7\6\2\29;\5\f\7\2:\66\3\2\2"+
+		"\2:\67\3\2\2\2:8\3\2\2\2:9\3\2\2\2;<\3\2\2\2<>\5\6\4\6=\65\3\2\2\2>A\3"+
+		"\2\2\2?=\3\2\2\2?@\3\2\2\2@\7\3\2\2\2A?\3\2\2\2BC\7\7\2\2CD\5\16\b\2D"+
+		"\t\3\2\2\2EF\7\b\2\2FG\5\16\b\2G\13\3\2\2\2HI\7\t\2\2IJ\5\16\b\2J\r\3"+
+		"\2\2\2KL\7\24\2\2LM\5\20\t\2MN\7\26\2\2NO\5\20\t\2OP\7\25\2\2P\17\3\2"+
+		"\2\2QR\t\2\2\2R\21\3\2\2\2ST\t\3\2\2T\23\3\2\2\2UV\7\33\2\2VW\7\3\2\2"+
+		"WX\5\26\f\2X\25\3\2\2\2YZ\t\4\2\2Z\27\3\2\2\2\7\34\'\63:?";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

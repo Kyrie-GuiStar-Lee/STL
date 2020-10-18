@@ -17,49 +17,70 @@ public class STLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ST
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitProg(STLParser.ProgContext ctx) { return visitChildren(ctx); }
+	@Override public T visitProgram_(STLParser.Program_Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFormula(STLParser.FormulaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFormula_(STLParser.Formula_Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpr(STLParser.ExprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEventualAlways_(STLParser.EventualAlways_Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitEventually(STLParser.EventuallyContext ctx) { return visitChildren(ctx); }
+	@Override public T visitParens_(STLParser.Parens_Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAlways(STLParser.AlwaysContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAndOrImplyUntil_(STLParser.AndOrImplyUntil_Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitUntil(STLParser.UntilContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPredicates_(STLParser.Predicates_Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInterval(STLParser.IntervalContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEventually_(STLParser.Eventually_Context ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitAlways_(STLParser.Always_Context ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitUntil_(STLParser.Until_Context ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitInterval_(STLParser.Interval_Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -73,13 +94,6 @@ public class STLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ST
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPredicates(STLParser.PredicatesContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitRelop(STLParser.RelopContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -87,7 +101,7 @@ public class STLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ST
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPerturbation_list(STLParser.Perturbation_listContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPerturbationList_(STLParser.PerturbationList_Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
