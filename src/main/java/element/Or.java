@@ -1,4 +1,5 @@
 package element;
+import abstracts.ExpressionTwo;
 
-public class Or implements Expression {
+public class Or extends ExpressionTwo {
 }

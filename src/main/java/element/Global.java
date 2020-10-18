@@ -1,4 +1,5 @@
 package element;
+import abstracts.ExpressionOne;
 
-public class Global implements Expression {
+public class Global extends ExpressionOne {
 }

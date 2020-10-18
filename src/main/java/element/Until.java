@@ -1,5 +1,7 @@
 package element;
 
-public class Until extends Program {
+import abstracts.ExpressionTwo;
+
+public class Until extends ExpressionTwo {
 
 }

@@ -1,5 +1,6 @@
 package element;
+import abstracts.ExpressionTwo;
 
-public class And implements Expression {
+public class And extends ExpressionTwo {
 
 }

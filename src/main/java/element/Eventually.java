@@ -1,5 +1,6 @@
 package element;
+import abstracts.ExpressionOne;
 
-public class Eventually implements Expression{
+public class Eventually extends ExpressionOne {
 
 }
