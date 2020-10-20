@@ -1,7 +1,7 @@
 grammar STL;
 
 //开始的变量
-prog: form perturbation_list+ EOF # Program_ ;
+prog: form perturbation_list* EOF # Program_ ;
 
     form
         : NAME '=' expr # Formula_ ;
