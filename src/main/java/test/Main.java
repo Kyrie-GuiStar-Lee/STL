@@ -18,6 +18,6 @@ public class Main {
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         STLParser parser = new STLParser(tokenStream);
         ParseTree parseTree = parser.prog();
-
+        System.out.println();
     }
 }
