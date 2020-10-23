@@ -57,12 +57,6 @@ public class AntlrtoExpression extends STLBaseVisitor<Expression> {
         return super.visitUntil_(ctx);
     }
 
-    @Override
-    public Expression visitPerturbation_(STLParser.Perturbation_Context ctx) {
-        String name = ctx.getChild(0).getText();
-        double num = Double.parseDouble(ctx.getChild(2).getText());
-        return Perturbation(name,num);
-    }
 
 
 }
