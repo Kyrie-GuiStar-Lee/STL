@@ -21,11 +21,11 @@ public class STLParser extends Parser {
 		GE=12, SpaceOrTab=13, Comment=14, Letter=15, LPAREN=16, LINEJUMP=17, RPAREN=18, 
 		LB=19, RB=20, COMMA=21, NUMBER=22, NNUMBER=23, NAME=24, Signal=25, SignalPert=26;
 	public static final int
-		RULE_prog = 0, RULE_form = 1, RULE_expr = 2, RULE_monocularTemporalop = 3, 
+		RULE_prog = 0, RULE_form = 1, RULE_expr = 2, RULE_unaryTemporalop = 3, 
 		RULE_until = 4, RULE_perturbation = 5;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"prog", "form", "expr", "monocularTemporalop", "until", "perturbation"
+			"prog", "form", "expr", "unaryTemporalop", "until", "perturbation"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -243,8 +243,8 @@ public class STLParser extends Parser {
 		}
 	}
 	public static class EventualAlways_Context extends ExprContext {
-		public MonocularTemporalopContext monocularTemporalop() {
-			return getRuleContext(MonocularTemporalopContext.class,0);
+		public UnaryTemporalopContext unaryTemporalop() {
+			return getRuleContext(UnaryTemporalopContext.class,0);
 		}
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
@@ -384,7 +384,7 @@ public class STLParser extends Parser {
 				_prevctx = _localctx;
 
 				setState(26);
-				monocularTemporalop();
+				unaryTemporalop();
 				setState(27);
 				expr(5);
 				}
@@ -511,18 +511,18 @@ public class STLParser extends Parser {
 		return _localctx;
 	}
 
-	public static class MonocularTemporalopContext extends ParserRuleContext {
-		public MonocularTemporalopContext(ParserRuleContext parent, int invokingState) {
+	public static class UnaryTemporalopContext extends ParserRuleContext {
+		public UnaryTemporalopContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_monocularTemporalop; }
+		@Override public int getRuleIndex() { return RULE_unaryTemporalop; }
 	 
-		public MonocularTemporalopContext() { }
-		public void copyFrom(MonocularTemporalopContext ctx) {
+		public UnaryTemporalopContext() { }
+		public void copyFrom(UnaryTemporalopContext ctx) {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class MonocularTemporalop_Context extends MonocularTemporalopContext {
+	public static class UnaryTemporalop_Context extends UnaryTemporalopContext {
 		public TerminalNode LB() { return getToken(STLParser.LB, 0); }
 		public List<TerminalNode> NUMBER() { return getTokens(STLParser.NUMBER); }
 		public TerminalNode NUMBER(int i) {
@@ -532,28 +532,28 @@ public class STLParser extends Parser {
 		public TerminalNode RB() { return getToken(STLParser.RB, 0); }
 		public TerminalNode F() { return getToken(STLParser.F, 0); }
 		public TerminalNode G() { return getToken(STLParser.G, 0); }
-		public MonocularTemporalop_Context(MonocularTemporalopContext ctx) { copyFrom(ctx); }
+		public UnaryTemporalop_Context(UnaryTemporalopContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).enterMonocularTemporalop_(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).enterUnaryTemporalop_(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof STLListener ) ((STLListener)listener).exitMonocularTemporalop_(this);
+			if ( listener instanceof STLListener ) ((STLListener)listener).exitUnaryTemporalop_(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitMonocularTemporalop_(this);
+			if ( visitor instanceof STLVisitor ) return ((STLVisitor<? extends T>)visitor).visitUnaryTemporalop_(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final MonocularTemporalopContext monocularTemporalop() throws RecognitionException {
-		MonocularTemporalopContext _localctx = new MonocularTemporalopContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_monocularTemporalop);
+	public final UnaryTemporalopContext unaryTemporalop() throws RecognitionException {
+		UnaryTemporalopContext _localctx = new UnaryTemporalopContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_unaryTemporalop);
 		int _la;
 		try {
-			_localctx = new MonocularTemporalop_Context(_localctx);
+			_localctx = new UnaryTemporalop_Context(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(53);

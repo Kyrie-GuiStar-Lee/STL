@@ -5,13 +5,13 @@ prog: form perturbation* EOF # Program_ ;
 
     form
         : NAME '=' expr # Formula_ ;
-    expr: monocularTemporalop expr # EventualAlways_
+    expr: unaryTemporalop expr # EventualAlways_
         | NOT expr # NotExpr
         | expr (AND|OR|IMPLY|until)  expr # AndOrImplyUntil_
         | LPAREN expr RPAREN # Parens_
         | Signal (GT| LT| GE| LE) (NUMBER|NNUMBER) # Predicates_;
 
-    monocularTemporalop: (F|G) LB NUMBER COMMA NUMBER RB  # MonocularTemporalop_;
+    unaryTemporalop: (F|G) LB NUMBER COMMA NUMBER RB  # UnaryTemporalop_;
    // always: G LB NUMBER COMMA NUMBER RB  # Always_;
     until: U LB NUMBER COMMA NUMBER RB  # Until_;
     //interval:LB NUMBER COMMA NUMBER RB # Interval_;

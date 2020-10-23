@@ -92,17 +92,17 @@ public interface STLListener extends ParseTreeListener {
 	 */
 	void exitPredicates_(STLParser.Predicates_Context ctx);
 	/**
-	 * Enter a parse tree produced by the {@code MonocularTemporalop_}
-	 * labeled alternative in {@link STLParser#monocularTemporalop}.
+	 * Enter a parse tree produced by the {@code UnaryTemporalop_}
+	 * labeled alternative in {@link STLParser#unaryTemporalop}.
 	 * @param ctx the parse tree
 	 */
-	void enterMonocularTemporalop_(STLParser.MonocularTemporalop_Context ctx);
+	void enterUnaryTemporalop_(STLParser.UnaryTemporalop_Context ctx);
 	/**
-	 * Exit a parse tree produced by the {@code MonocularTemporalop_}
-	 * labeled alternative in {@link STLParser#monocularTemporalop}.
+	 * Exit a parse tree produced by the {@code UnaryTemporalop_}
+	 * labeled alternative in {@link STLParser#unaryTemporalop}.
 	 * @param ctx the parse tree
 	 */
-	void exitMonocularTemporalop_(STLParser.MonocularTemporalop_Context ctx);
+	void exitUnaryTemporalop_(STLParser.UnaryTemporalop_Context ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Until_}
 	 * labeled alternative in {@link STLParser#until}.

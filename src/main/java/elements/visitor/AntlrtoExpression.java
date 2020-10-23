@@ -45,9 +45,10 @@ public class AntlrtoExpression extends STLBaseVisitor<Expression> {
         return new Predicates(name,type,num);
     }
 
+
     @Override
-    public Expression visitMonocularTemporalop_(STLParser.MonocularTemporalop_Context ctx) {
-        return super.visitMonocularTemporalop_(ctx);
+    public Expression visitUnaryTemporalop_(STLParser.UnaryTemporalop_Context ctx) {
+        return super.visitUnaryTemporalop_(ctx);
     }
 
     @Override

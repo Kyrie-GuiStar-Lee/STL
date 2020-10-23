@@ -100,13 +100,13 @@ public class STLBaseListener implements STLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMonocularTemporalop_(STLParser.MonocularTemporalop_Context ctx) { }
+	@Override public void enterUnaryTemporalop_(STLParser.UnaryTemporalop_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMonocularTemporalop_(STLParser.MonocularTemporalop_Context ctx) { }
+	@Override public void exitUnaryTemporalop_(STLParser.UnaryTemporalop_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

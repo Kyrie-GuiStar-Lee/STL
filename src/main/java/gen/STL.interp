@@ -60,7 +60,7 @@ rule names:
 prog
 form
 expr
-monocularTemporalop
+unaryTemporalop
 until
 perturbation
 

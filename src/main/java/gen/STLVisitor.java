@@ -60,12 +60,12 @@ public interface STLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPredicates_(STLParser.Predicates_Context ctx);
 	/**
-	 * Visit a parse tree produced by the {@code MonocularTemporalop_}
-	 * labeled alternative in {@link STLParser#monocularTemporalop}.
+	 * Visit a parse tree produced by the {@code UnaryTemporalop_}
+	 * labeled alternative in {@link STLParser#unaryTemporalop}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMonocularTemporalop_(STLParser.MonocularTemporalop_Context ctx);
+	T visitUnaryTemporalop_(STLParser.UnaryTemporalop_Context ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Until_}
 	 * labeled alternative in {@link STLParser#until}.
