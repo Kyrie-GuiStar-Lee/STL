@@ -3,7 +3,7 @@ import elements.abstracts.Expression;
 import elements.abstracts.ExpressionTwo;
 
 public class And extends ExpressionTwo {
-    And(Expression left, Expression right){
-        super(left,right);
+    public And(Expression left, Expression right) {
+        super(left, right);
     }
 }

@@ -32,17 +32,53 @@ public interface STLListener extends ParseTreeListener {
 	 */
 	void exitFormula_(STLParser.Formula_Context ctx);
 	/**
-	 * Enter a parse tree produced by the {@code EventualAlways_}
+	 * Enter a parse tree produced by the {@code Imply_}
 	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterEventualAlways_(STLParser.EventualAlways_Context ctx);
+	void enterImply_(STLParser.Imply_Context ctx);
 	/**
-	 * Exit a parse tree produced by the {@code EventualAlways_}
+	 * Exit a parse tree produced by the {@code Imply_}
 	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitEventualAlways_(STLParser.EventualAlways_Context ctx);
+	void exitImply_(STLParser.Imply_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Until_}
+	 * labeled alternative in {@link STLParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterUntil_(STLParser.Until_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Until_}
+	 * labeled alternative in {@link STLParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitUntil_(STLParser.Until_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code And_}
+	 * labeled alternative in {@link STLParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAnd_(STLParser.And_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code And_}
+	 * labeled alternative in {@link STLParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAnd_(STLParser.And_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code UnaryExpression_}
+	 * labeled alternative in {@link STLParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterUnaryExpression_(STLParser.UnaryExpression_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code UnaryExpression_}
+	 * labeled alternative in {@link STLParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitUnaryExpression_(STLParser.UnaryExpression_Context ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Parens_}
 	 * labeled alternative in {@link STLParser#expr}.
@@ -56,29 +92,17 @@ public interface STLListener extends ParseTreeListener {
 	 */
 	void exitParens_(STLParser.Parens_Context ctx);
 	/**
-	 * Enter a parse tree produced by the {@code NotExpr}
+	 * Enter a parse tree produced by the {@code Or_}
 	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterNotExpr(STLParser.NotExprContext ctx);
+	void enterOr_(STLParser.Or_Context ctx);
 	/**
-	 * Exit a parse tree produced by the {@code NotExpr}
+	 * Exit a parse tree produced by the {@code Or_}
 	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitNotExpr(STLParser.NotExprContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code AndOrImplyUntil_}
-	 * labeled alternative in {@link STLParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterAndOrImplyUntil_(STLParser.AndOrImplyUntil_Context ctx);
-	/**
-	 * Exit a parse tree produced by the {@code AndOrImplyUntil_}
-	 * labeled alternative in {@link STLParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitAndOrImplyUntil_(STLParser.AndOrImplyUntil_Context ctx);
+	void exitOr_(STLParser.Or_Context ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Predicates_}
 	 * labeled alternative in {@link STLParser#expr}.
@@ -92,29 +116,89 @@ public interface STLListener extends ParseTreeListener {
 	 */
 	void exitPredicates_(STLParser.Predicates_Context ctx);
 	/**
-	 * Enter a parse tree produced by the {@code UnaryTemporalop_}
-	 * labeled alternative in {@link STLParser#unaryTemporalop}.
+	 * Enter a parse tree produced by the {@code Eventually_}
+	 * labeled alternative in {@link STLParser#eventually}.
 	 * @param ctx the parse tree
 	 */
-	void enterUnaryTemporalop_(STLParser.UnaryTemporalop_Context ctx);
+	void enterEventually_(STLParser.Eventually_Context ctx);
 	/**
-	 * Exit a parse tree produced by the {@code UnaryTemporalop_}
-	 * labeled alternative in {@link STLParser#unaryTemporalop}.
+	 * Exit a parse tree produced by the {@code Eventually_}
+	 * labeled alternative in {@link STLParser#eventually}.
 	 * @param ctx the parse tree
 	 */
-	void exitUnaryTemporalop_(STLParser.UnaryTemporalop_Context ctx);
+	void exitEventually_(STLParser.Eventually_Context ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Until_}
-	 * labeled alternative in {@link STLParser#until}.
+	 * Enter a parse tree produced by the {@code Global_}
+	 * labeled alternative in {@link STLParser#global}.
 	 * @param ctx the parse tree
 	 */
-	void enterUntil_(STLParser.Until_Context ctx);
+	void enterGlobal_(STLParser.Global_Context ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Until_}
-	 * labeled alternative in {@link STLParser#until}.
+	 * Exit a parse tree produced by the {@code Global_}
+	 * labeled alternative in {@link STLParser#global}.
 	 * @param ctx the parse tree
 	 */
-	void exitUntil_(STLParser.Until_Context ctx);
+	void exitGlobal_(STLParser.Global_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Not_}
+	 * labeled alternative in {@link STLParser#not}.
+	 * @param ctx the parse tree
+	 */
+	void enterNot_(STLParser.Not_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Not_}
+	 * labeled alternative in {@link STLParser#not}.
+	 * @param ctx the parse tree
+	 */
+	void exitNot_(STLParser.Not_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code GT_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 */
+	void enterGT_(STLParser.GT_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code GT_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 */
+	void exitGT_(STLParser.GT_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code LT_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 */
+	void enterLT_(STLParser.LT_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code LT_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 */
+	void exitLT_(STLParser.LT_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code GE_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 */
+	void enterGE_(STLParser.GE_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code GE_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 */
+	void exitGE_(STLParser.GE_Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code LE_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 */
+	void enterLE_(STLParser.LE_Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code LE_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 */
+	void exitLE_(STLParser.LE_Context ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Perturbation_}
 	 * labeled alternative in {@link STLParser#perturbation}.

@@ -1,9 +1,8 @@
-package elements.element;
+package elements.abstracts;
 import elements.abstracts.Expression;
 
-public class Predicates extends Expression{
+public abstract class Predicates extends Expression{
     public String sigName;
-    public String type;
     /**
      * 2020-10-18
      * tong
@@ -11,9 +10,8 @@ public class Predicates extends Expression{
      */
     public double num;
 
-    public Predicates(String sigName, String type, double num) {
+    public Predicates(String sigName, double num) {
         this.sigName = sigName;
-        this.type = type;
         this.num = num;
     }
 }

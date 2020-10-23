@@ -6,8 +6,6 @@ import gen.STLBaseVisitor;
 import gen.STLParser;
 
 public class PerturbationVisitor extends STLBaseVisitor<Perturbation> {
-
-
     @Override
     public Perturbation visitPerturbation_(STLParser.Perturbation_Context ctx) {
         String name = ctx.getChild(0).getText();

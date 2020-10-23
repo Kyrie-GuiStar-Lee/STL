@@ -1,31 +1,36 @@
 grammar STL;
 
 //开始的变量
-prog: form perturbation_list* EOF # Program_ ;
+prog: form perturbation* EOF # Program_ ;
 
     form
         : NAME '=' expr # Formula_ ;
-    expr: (eventually|always) expr # EventualAlways_
-        | expr (AND|OR|IMPLY|until)  expr # AndOrImplyUntil_
+    expr: (eventually|global|not) # UnaryExpression_
+        | expr AND expr # And_
+        | expr OR expr # Or_
+        | expr IMPLY expr # Imply_
+        | expr U LB NUMBER COMMA NUMBER RB expr # Until_
         | LPAREN expr RPAREN # Parens_
-        | Signal relop realnum # Predicates_;
+        |  relop  # Predicates_;
 
-    eventually: F interval # Eventually_;
-    always: G interval # Always_;
-    until: U interval # Until_;
-    interval:LB intvalue COMMA intvalue RB # Interval_;
-    intvalue: NUMBER;//不考虑时间区间值为变量的情况
-    relop: GT| LT| GE| LE ;
+    eventually: F LB NUMBER COMMA NUMBER RB expr  # Eventually_;
+    global: G LB NUMBER COMMA NUMBER RB expr # Global_;
+    not: NOT expr # Not_;
+    relop:
+       Signal GT (NUMBER|NNUMBER) #GT_
+        | Signal LT (NUMBER|NNUMBER) #LT_
+        | Signal GE (NUMBER|NNUMBER) #GE_
+        | Signal LE (NUMBER|NNUMBER) #LE_;
+    perturbation : SignalPert '=' (NUMBER|NNUMBER) # Perturbation_;
 
-    perturbation_list : SignalPert '=' realnum # PerturbationList_;
-
-    realnum: NUMBER|NNUMBER ;
+    //realnum:  ;
 
 /**Tokens**/
 //operators
 AND: 'AND';
 OR: 'OR';
 IMPLY:'-->';
+NOT:'NOT';
 F:'F_';
 G:'G_';
 U:'U_';

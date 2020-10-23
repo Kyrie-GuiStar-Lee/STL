@@ -25,12 +25,33 @@ public interface STLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFormula_(STLParser.Formula_Context ctx);
 	/**
-	 * Visit a parse tree produced by the {@code EventualAlways_}
+	 * Visit a parse tree produced by the {@code Imply_}
 	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitEventualAlways_(STLParser.EventualAlways_Context ctx);
+	T visitImply_(STLParser.Imply_Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Until_}
+	 * labeled alternative in {@link STLParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUntil_(STLParser.Until_Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code And_}
+	 * labeled alternative in {@link STLParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAnd_(STLParser.And_Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code UnaryExpression_}
+	 * labeled alternative in {@link STLParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUnaryExpression_(STLParser.UnaryExpression_Context ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Parens_}
 	 * labeled alternative in {@link STLParser#expr}.
@@ -39,19 +60,12 @@ public interface STLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParens_(STLParser.Parens_Context ctx);
 	/**
-	 * Visit a parse tree produced by the {@code NotExpr}
+	 * Visit a parse tree produced by the {@code Or_}
 	 * labeled alternative in {@link STLParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNotExpr(STLParser.NotExprContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code AndOrImplyUntil_}
-	 * labeled alternative in {@link STLParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAndOrImplyUntil_(STLParser.AndOrImplyUntil_Context ctx);
+	T visitOr_(STLParser.Or_Context ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Predicates_}
 	 * labeled alternative in {@link STLParser#expr}.
@@ -60,19 +74,54 @@ public interface STLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPredicates_(STLParser.Predicates_Context ctx);
 	/**
-	 * Visit a parse tree produced by the {@code UnaryTemporalop_}
-	 * labeled alternative in {@link STLParser#unaryTemporalop}.
+	 * Visit a parse tree produced by the {@code Eventually_}
+	 * labeled alternative in {@link STLParser#eventually}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUnaryTemporalop_(STLParser.UnaryTemporalop_Context ctx);
+	T visitEventually_(STLParser.Eventually_Context ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Until_}
-	 * labeled alternative in {@link STLParser#until}.
+	 * Visit a parse tree produced by the {@code Global_}
+	 * labeled alternative in {@link STLParser#global}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUntil_(STLParser.Until_Context ctx);
+	T visitGlobal_(STLParser.Global_Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Not_}
+	 * labeled alternative in {@link STLParser#not}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNot_(STLParser.Not_Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code GT_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGT_(STLParser.GT_Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code LT_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLT_(STLParser.LT_Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code GE_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGE_(STLParser.GE_Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code LE_}
+	 * labeled alternative in {@link STLParser#relop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLE_(STLParser.LE_Context ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Perturbation_}
 	 * labeled alternative in {@link STLParser#perturbation}.

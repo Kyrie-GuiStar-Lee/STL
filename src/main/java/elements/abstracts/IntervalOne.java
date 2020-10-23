@@ -1,8 +1,15 @@
-package elements.element;
+package elements.abstracts;
 
-import static java.lang.Double.MAX_VALUE;
+public abstract class IntervalOne extends ExpressionOne{
+    double start;
+    double end;
 
-public class Interval{
+    public IntervalOne(Expression expression, double start, double end) {
+        super(expression);
+        this.start = start;
+        this.end = end;
+    }
+
 //    public RealNum lNum;
 //    public RealNum rNum;
 //    public Interval(RealNum l,RealNum r)
