@@ -1,4 +1,4 @@
-// Generated from /Users/jun/Documents/project/STL/src/main/resources/STL.g4 by ANTLR 4.8
+// Generated from E:/STL/src/main/resources\STL.g4 by ANTLR 4.8
 package gen;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -45,6 +45,13 @@ public class STLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ST
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitNotExpr(STLParser.NotExprContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitAndOrImplyUntil_(STLParser.AndOrImplyUntil_Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -59,14 +66,7 @@ public class STLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ST
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitEventually_(STLParser.Eventually_Context ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitAlways_(STLParser.Always_Context ctx) { return visitChildren(ctx); }
+	@Override public T visitMonocularTemporalop_(STLParser.MonocularTemporalop_Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -80,33 +80,5 @@ public class STLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ST
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInterval_(STLParser.Interval_Context ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitIntvalue(STLParser.IntvalueContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitRelop(STLParser.RelopContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitPerturbation_(STLParser.Perturbation_Context ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitRealnum(STLParser.RealnumContext ctx) { return visitChildren(ctx); }
 }

@@ -1,4 +1,4 @@
-// Generated from /Users/jun/Documents/project/STL/src/main/resources/STL.g4 by ANTLR 4.8
+// Generated from E:/STL/src/main/resources\STL.g4 by ANTLR 4.8
 package gen;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -64,6 +64,18 @@ public class STLBaseListener implements STLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterNotExpr(STLParser.NotExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNotExpr(STLParser.NotExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAndOrImplyUntil_(STLParser.AndOrImplyUntil_Context ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -88,25 +100,13 @@ public class STLBaseListener implements STLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEventually_(STLParser.Eventually_Context ctx) { }
+	@Override public void enterMonocularTemporalop_(STLParser.MonocularTemporalop_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEventually_(STLParser.Eventually_Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAlways_(STLParser.Always_Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAlways_(STLParser.Always_Context ctx) { }
+	@Override public void exitMonocularTemporalop_(STLParser.MonocularTemporalop_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -124,42 +124,6 @@ public class STLBaseListener implements STLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterval_(STLParser.Interval_Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInterval_(STLParser.Interval_Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterIntvalue(STLParser.IntvalueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIntvalue(STLParser.IntvalueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRelop(STLParser.RelopContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRelop(STLParser.RelopContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterPerturbation_(STLParser.Perturbation_Context ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -167,18 +131,6 @@ public class STLBaseListener implements STLListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPerturbation_(STLParser.Perturbation_Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRealnum(STLParser.RealnumContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRealnum(STLParser.RealnumContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
