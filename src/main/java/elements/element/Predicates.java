@@ -1,7 +1,5 @@
 package elements.element;
 import elements.abstracts.Expression;
-import elements.abstracts.ExpressionTwo;
-import elements.element.RealNum;
 
 public class Predicates extends Expression{
     public String sigName;

@@ -2,6 +2,7 @@ package elements.visitor;
 
 import elements.abstracts.Expression;
 import elements.abstracts.UnaryOperator;
+import elements.element.Perturbation;
 import elements.element.Predicates;
 import elements.element.expressionone.ExpressionOne;
 import gen.STLBaseVisitor;
@@ -58,7 +59,9 @@ public class AntlrtoExpression extends STLBaseVisitor<Expression> {
 
     @Override
     public Expression visitPerturbation_(STLParser.Perturbation_Context ctx) {
-        return super.visitPerturbation_(ctx);
+        String name = ctx.getChild(0).getText();
+        double num = Double.parseDouble(ctx.getChild(2).getText());
+        return Perturbation(name,num);
     }
 
 
