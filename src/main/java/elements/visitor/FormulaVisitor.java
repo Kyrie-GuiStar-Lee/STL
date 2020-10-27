@@ -19,7 +19,7 @@ public class FormulaVisitor extends STLBaseVisitor<Formula> {
         String formulaName = ctx.getChild(0).getText();
         AntlrtoExpression exprVisitor = new AntlrtoExpression(semanticErrors);
         signalName = exprVisitor.getSignalName();
-        Expression expr = exprVisitor.visit(ctx.getChild(2));
+        Expression expr = exprVisitor.visit(ctx.expr());
         return new Formula(formulaName,expr);
     }
 

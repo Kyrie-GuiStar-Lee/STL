@@ -40,15 +40,17 @@ public class AntlrtoProgram extends STLBaseVisitor<Program> {
         Formula formula = fv.visit(ctx.getChild(0));
         List<Perturbation> pertList = new ArrayList<Perturbation>();
         Set<String> pertName = new HashSet<String>();
-        for(int i = 1; i < ctx.getChildCount(); i++)
-        {
+        for(int i = 1; i < ctx.getChildCount()-1; i++)
+        {/**
+         最后一个是EOF
+         **/
              PerturbationVisitor pv = new PerturbationVisitor();
              Perturbation p = pv.visit(ctx.getChild(i));
              pertList.add(p);
             /**
              * 扰动重复定义有二义性
              */
-            String name = p.sigName.substring(0,p.sigName.length()-6);
+            String name = p.sigName.substring(0,p.sigName.length()-5);
             if(pertName.contains(name))
             {
                 semanticErrors.add("Error: duplicated perturbation");

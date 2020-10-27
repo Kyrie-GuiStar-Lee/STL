@@ -38,7 +38,8 @@ public class AntlrtoExpression extends STLBaseVisitor<Expression> {
 
     @Override
     public Expression visitParens_(STLParser.Parens_Context ctx) {
-        return super.visitParens_(ctx);
+        Expression expr = visit(ctx.getChild(1));
+        return new ParenExpression(expr);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class AntlrtoExpression extends STLBaseVisitor<Expression> {
         {
             semanticErrors.add("Error: interval error");
         }
-        Expression expr = visit(ctx.getChild(6));
+        Expression expr = visit(ctx.expr());
         return new Global(expr,start,end);
     }
 

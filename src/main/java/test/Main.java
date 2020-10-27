@@ -1,6 +1,8 @@
 package test;
 
 
+import elements.element.Program;
+import elements.visitor.AntlrtoProgram;
 import gen.STLLexer;
 import gen.STLParser;
 import org.antlr.v4.runtime.CharStreams;
@@ -18,5 +20,9 @@ public class Main {
         STLParser parser = new STLParser(tokenStream);
         ParseTree parseTree = parser.prog();
        // System.out.println();
+
+        AntlrtoProgram visitor = new AntlrtoProgram();
+        Program program = visitor.visit(parseTree);
+        System.out.println();
     }
 }
